@@ -1,0 +1,67 @@
+site_name: poincare-memory
+site_description: Hierarchy-aware, time-aware memory for LLM agents on the Poincaré ball
+site_url: https://dhruvmojila.github.io/poincare-memory/
+repo_url: https://github.com/dhruvmojila/poincare-memory
+repo_name: dhruvmojila/poincare-memory
+copyright: Code Apache-2.0 · © 2026 Dhruv Mojila · the paper itself is © IEEE
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: teal
+      accent: amber
+      toggle: {icon: material/weather-sunny, name: Light mode}
+    - scheme: default
+      primary: teal
+      accent: amber
+      toggle: {icon: material/weather-night, name: Dark mode}
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - toc.follow
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Concepts: concepts.md
+  - Guides:
+      - Building a hierarchy: guides/hierarchy.md
+      - Time and forgetting: guides/temporal.md
+      - Structural queries: guides/structural-queries.md
+      - Inspecting a memory: guides/inspection.md
+      - Persistence and export: guides/persistence.md
+      - Scaling and vector databases: guides/scaling.md
+      - Embedders: guides/embedders.md
+      - Using it in an agent: guides/agents.md
+  - Paper mapping: paper-mapping.md
+  - Benchmarks: benchmarks.md
+  - API reference: api.md
+  - FAQ: faq.md
+  - Changelog: changelog.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+            docstring_style: numpy
+            members_order: source
+            show_root_heading: true
+            separate_signature: true
+            merge_init_into_class: true
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed: {alternate_style: true}
+  - pymdownx.arithmatex: {generic: true}
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

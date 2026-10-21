@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "poincare-memory"
+version = "0.1.0"
+description = "Hierarchy-aware, time-aware memory for LLM agents and RAG on hyperbolic (Poincaré ball) geometry. Official reference implementation of the memory component of 'LLM Orchestration with Geometry-Aware Memory' (IEEE ICBDML 2026)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Dhruv Mojila", email = "dhruvmojila098@gmail.com" }]
+keywords = [
+  "hyperbolic embeddings", "poincare ball", "agent memory", "llm agents",
+  "retrieval-augmented generation", "hierarchical retrieval", "temporal memory",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: OS Independent",
+  "Typing :: Typed",
+]
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+embed = ["sentence-transformers>=3.0"]
+torch = ["torch>=2.1", "geoopt>=0.5"]
+viz = ["matplotlib>=3.7"]
+pandas = ["pandas>=2.0"]
+bench = ["nltk>=3.8"]
+ann = ["faiss-cpu>=1.8"]
+all = ["poincare-memory[embed,viz,pandas,bench,ann]"]
+dev = [
+  "pytest>=8", "hypothesis>=6.100", "pytest-cov>=5",
+  "ruff>=0.6", "mypy>=1.10", "pre-commit>=3.7",
+  "mkdocs>=1.6,<2", "mkdocs-material>=9.5,<10", "mkdocstrings[python]>=0.25",
+  "build>=1.2", "twine>=5",
+]
+
+[project.urls]
+Homepage = "https://github.com/dhruvmojila/poincare-memory"
+Repository = "https://github.com/dhruvmojila/poincare-memory"
+Documentation = "https://dhruvmojila.github.io/poincare-memory"
+Issues = "https://github.com/dhruvmojila/poincare-memory/issues"
+Changelog = "https://github.com/dhruvmojila/poincare-memory/blob/main/CHANGELOG.md"
+Paper = "https://doi.org/10.1109/ICBDML68582.2026.11544690"
+
+[project.scripts]
+poincare-memory = "poincare_memory.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/poincare_memory"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md", "LICENSE", "CITATION.cff", "CHANGELOG.md", "pyproject.toml"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "NPY", "RUF"]
+ignore = ["E501", "RUF001", "RUF002", "RUF003"]  # line length handled by the formatter; typographic characters are intentional
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unreachable = true
+ignore_missing_imports = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:poincare_memory.*"]

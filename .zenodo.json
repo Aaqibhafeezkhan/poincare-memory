@@ -1,0 +1,28 @@
+{
+  "upload_type": "software",
+  "title": "poincare-memory: hierarchy-aware, time-aware memory for LLM agents on the Poincaré ball",
+  "version": "0.1.0",
+  "creators": [
+    {
+      "name": "Mojila, Dhruv",
+      "orcid": "0009-0007-9596-7503"
+    }
+  ],
+  "license": "apache-2.0",
+  "description": "Official open-source reference implementation of the geometry-aware memory component of 'LLM Orchestration with Geometry-Aware Memory' (IEEE ICBDML 2026, doi:10.1109/ICBDML68582.2026.11544690). Written after the paper from its description; the original experimental system is not released.",
+  "keywords": [
+    "large language models",
+    "agent memory",
+    "hyperbolic embeddings",
+    "Poincaré ball",
+    "retrieval-augmented generation",
+    "hierarchical retrieval"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.1109/ICBDML68582.2026.11544690",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-conferencepaper"
+    }
+  ]
+}

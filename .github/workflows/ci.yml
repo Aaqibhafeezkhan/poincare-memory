@@ -1,0 +1,27 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: uv pip install --system -e ".[dev,viz,pandas]"
+      - run: ruff check . && ruff format --check .
+      - run: mypy
+      - run: pytest --cov=poincare_memory --cov-report=xml
+      - run: cffconvert --validate -i CITATION.cff
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
+      - run: python scripts/check_docs_examples.py && mkdocs build --strict
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
