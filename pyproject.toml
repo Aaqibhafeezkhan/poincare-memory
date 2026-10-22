@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "poincare-memory"
-version = "0.1.0"
+version = "0.1.1"
 description = "Hierarchy-aware, time-aware memory for LLM agents and RAG on hyperbolic (Poincaré ball) geometry. Official reference implementation of the memory component of 'LLM Orchestration with Geometry-Aware Memory' (IEEE ICBDML 2026)."
 readme = "README.md"
 requires-python = ">=3.10"

@@ -36,7 +36,7 @@ class HashingEmbedder:
     or any callable for real semantics.
 
     Algorithm (stable across versions and ports): lower-case the text; tokens are
-    ``[\w']+``; features are ``"w:" + token`` and ``"c:" + ngram`` for character
+    ``[\\w']+``; features are ``"w:" + token`` and ``"c:" + ngram`` for character
     n-grams of ``"#" + token + "#"`` with lengths in ``ngram_range``; each feature is
     hashed with keyed BLAKE2b (digest 8 bytes, key = 4-byte little-endian ``seed``);
     index = first 4 bytes as little-endian integer mod ``dim``; sign = +1 if the

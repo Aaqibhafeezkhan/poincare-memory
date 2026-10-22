@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. The format follows Keep a Changelog; versions follow SemVer.
 
+## [0.1.1] — 2026-10-21
+### Fixed
+- A docstring in the hashing embedder contained an unescaped regular-expression sequence, which raised a `SyntaxWarning` on import under Python 3.12 and later.
+
 ## [0.1.0] — 2026-10-21
 ### Added
 - Poincaré ball geometry with curvature (`distance`, `distance_arcosh`, exp/log maps, Möbius operations, Lorentz conversions, dot-product trick for ANN indexes), float32/float64.
