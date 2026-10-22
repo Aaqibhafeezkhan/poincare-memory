@@ -15,7 +15,7 @@ Vector stores treat every memory as a point in flat space, so a taxonomy of a fe
 
 > **Provenance.** This package was written after the paper, from the paper's description and the primary literature. The system used for the paper's experiments is not released, and the numbers in this repository's benchmarks come only from the code here.
 
-![Interactive inspector: Poincaré disk, time slider, table and tree views](docs/assets/inspector-demo.gif)
+![Interactive inspector: Poincaré disk, time slider, table and tree views](https://raw.githubusercontent.com/dhruvmojila/poincare-memory/main/docs/assets/inspector-demo.gif)
 
 ## Install
 
@@ -103,7 +103,7 @@ The metacognitive controller, provider-agnostic ensemble and response synthesis 
 | 5 | 0.975 | 0.802 |
 | 10 | 0.957 | 0.837 |
 
-![WordNet mammals reconstruction MAP, Poincaré vs Euclidean](docs/assets/wordnet-mammals-map.png)
+![WordNet mammals reconstruction MAP, Poincaré vs Euclidean](https://raw.githubusercontent.com/dhruvmojila/poincare-memory/main/docs/assets/wordnet-mammals-map.png)
 
 Full table, environment and raw JSON in `benchmarks/README.md`; run it yourself with `pip install "poincare-memory[bench]"`.
 

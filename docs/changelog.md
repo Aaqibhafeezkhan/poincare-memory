@@ -2,9 +2,13 @@
 
 All notable changes to this project are documented here. The format follows Keep a Changelog; versions follow SemVer.
 
+## [0.1.3] — 2026-10-21
+### Changed
+- The README is the package description again, with the inspector demo and benchmark chart included.
+
 ## [0.1.2] — 2026-10-21
 ### Changed
-- The PyPI project page uses a description without repository-hosted images and badges (`README.pypi.md`, derived from the README by `scripts/make_pypi_readme.py`).
+- Temporarily used a description without repository-hosted images.
 
 ## [0.1.1] — 2026-10-21
 ### Fixed

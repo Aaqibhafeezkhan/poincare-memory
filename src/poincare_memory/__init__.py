@@ -40,7 +40,7 @@ from .temporal import (
     generative_agents_recency,
 )
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __all__ = [
     "BallProjector",
     "CallableEmbedder",

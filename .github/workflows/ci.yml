@@ -23,5 +23,5 @@ jobs:
       - run: pytest --cov=poincare_memory --cov-report=xml
       - run: cffconvert --validate -i CITATION.cff
         if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
-      - run: python scripts/make_pypi_readme.py --check && python scripts/check_docs_examples.py && mkdocs build --strict
+      - run: python scripts/check_docs_examples.py && mkdocs build --strict
         if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
