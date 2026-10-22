@@ -11,6 +11,14 @@ authors:
 version: 0.1.3
 date-released: "2026-10-21"
 license: Apache-2.0
+doi: 10.5281/zenodo.23551721
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23551721
+    description: "Zenodo concept DOI, resolves to the latest release"
+  - type: doi
+    value: 10.5281/zenodo.23551722
+    description: "Zenodo DOI of version 0.1.3"
 repository-code: "https://github.com/dhruvmojila/poincare-memory"
 url: "https://github.com/dhruvmojila/poincare-memory"
 abstract: >-

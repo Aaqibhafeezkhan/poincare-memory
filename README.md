@@ -6,6 +6,7 @@
 [![PyPI](https://img.shields.io/pypi/v/poincare-memory.svg)](https://pypi.org/project/poincare-memory/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Paper](https://img.shields.io/badge/IEEE%20ICBDML%202026-10.1109%2FICBDML68582.2026.11544690-00629B)](https://doi.org/10.1109/ICBDML68582.2026.11544690)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23551721.svg)](https://doi.org/10.5281/zenodo.23551721)
 
 `poincare-memory` is the official open-source reference implementation of the **geometry-aware memory** component of
 
@@ -124,7 +125,7 @@ poincare-memory export memory.db memory.json
 
 ## Citing
 
-If you use this library, please cite the paper (and, for the software itself, the Zenodo release in `CITATION.cff`):
+If you use this library, please cite the paper. The software itself is archived on Zenodo under the concept DOI [10.5281/zenodo.23551721](https://doi.org/10.5281/zenodo.23551721), which always resolves to the latest release; version DOIs are listed in `CITATION.cff`.
 
 ```bibtex
 @inproceedings{mojila2026llmorchestration,
