@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here. The format follows Keep a Changelog; versions follow SemVer.
 
-## [0.1.0] — 2026-10-10
+## [0.1.0] — 2026-10-21
 ### Added
 - Poincaré ball geometry with curvature (`distance`, `distance_arcosh`, exp/log maps, Möbius operations, Lorentz conversions, dot-product trick for ANN indexes), float32/float64.
 - `Memory`: hierarchy-aware, time-aware store with structural search modes (`subtree`, `children`, `ancestors`, `siblings`, `cone`), named temporal policies, SQLite persistence.
