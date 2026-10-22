@@ -8,7 +8,7 @@ The default search compares the query with every memory on the reference shell, 
 from poincare_memory.demo import build_demo_memory
 
 mem = build_demo_memory()
-mem.build_index()                  # NumPy by default; FAISS when installed
+mem.build_index()  # NumPy by default; FAISS when installed
 hits = mem.search("calf strain", k=5)
 ```
 
@@ -28,10 +28,10 @@ import numpy as np
 from poincare_memory import PoincareBall, to_mips_vectors
 
 ball = mem.ball
-shell = ball.set_depth(mem.points, mem.base_depth)        # what the shell metric compares
-stored = to_mips_vectors(ball.to_lorentz(shell))          # put these in your dot-product index
-q = ball.to_lorentz(mem.embed_query("calf strain"))        # query with the raw Lorentz vector
-scores = stored @ q                                        # larger = closer
+shell = ball.set_depth(mem.points, mem.base_depth)  # what the shell metric compares
+stored = to_mips_vectors(ball.to_lorentz(shell))  # put these in your dot-product index
+q = ball.to_lorentz(mem.embed_query("calf strain"))  # query with the raw Lorentz vector
+scores = stored @ q  # larger = closer
 top = np.argsort(-scores)[:5]
 ```
 

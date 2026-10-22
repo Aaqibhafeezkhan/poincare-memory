@@ -22,6 +22,7 @@ A memory 28 days old under a 14-day half-life has weight 0.25. `generative_agent
 
 ```python
 from poincare_memory import Ebbinghaus
+
 mem = Memory(decay=Ebbinghaus(stability_hours=24 * 7, boost_per_access=0.5))
 ```
 
@@ -31,11 +32,24 @@ Weight is \(e^{-\Delta t / S}\) with \(S = \text{stability\_hours}\cdot(1 + \tex
 
 ```python
 from poincare_memory import Product, ValidityWindow
+
 mem = Memory(decay=Product(HalfLife(hours=24 * 90), ValidityWindow()))
-mem.add("API rate limit is 100 rps (release 2.3)", id="old", t=now - timedelta(days=90), valid_until=now - timedelta(days=20))
-mem.add("API rate limit is 250 rps (release 2.4)", id="new", t=now - timedelta(days=20), valid_from=now - timedelta(days=20))
-print([r.id for r in mem.search("rate limit", k=2)])                                   # ['new', 'old']
-print([r.id for r in mem.search("rate limit", k=2, at_time=now - timedelta(days=40))]) # ['old', 'new']
+mem.add(
+    "API rate limit is 100 rps (release 2.3)",
+    id="old",
+    t=now - timedelta(days=90),
+    valid_until=now - timedelta(days=20),
+)
+mem.add(
+    "API rate limit is 250 rps (release 2.4)",
+    id="new",
+    t=now - timedelta(days=20),
+    valid_from=now - timedelta(days=20),
+)
+print([r.id for r in mem.search("rate limit", k=2)])  # ['new', 'old']
+print(
+    [r.id for r in mem.search("rate limit", k=2, at_time=now - timedelta(days=40))]
+)  # ['old', 'new']
 ```
 
 Outside its window a memory keeps a tiny weight (`outside_weight`, default \(10^{-6}\)) rather than disappearing, so it can still be found when nothing else matches; filter it out explicitly if you want it gone (`filters=lambda r: ...`).

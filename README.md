@@ -33,24 +33,30 @@ Python ≥ 3.10. No GPU, no services.
 from datetime import datetime, timedelta, timezone
 from poincare_memory import Memory, HalfLife
 
-mem = Memory(decay=HalfLife(hours=24 * 30))          # memories lose weight with a 30-day half-life
+mem = Memory(decay=HalfLife(hours=24 * 30))  # memories lose weight with a 30-day half-life
 
-body  = mem.add("Human musculoskeletal system")
+body = mem.add("Human musculoskeletal system")
 lower = mem.add("Lower limb musculature", parent=body)
-hams  = mem.add("Hamstring group: knee flexion and hip extension", parent=lower)
-bf    = mem.add("Biceps femoris: lateral hamstring", parent=hams)
-mem.add("Athlete A reported tight hamstrings after 400 m repeats",
-        parent=hams, t=datetime.now(timezone.utc) - timedelta(days=30))
-mem.add("Athlete A: flexibility improved after two weeks of eccentric work",
-        parent=hams, t=datetime.now(timezone.utc) - timedelta(days=3))
+hams = mem.add("Hamstring group: knee flexion and hip extension", parent=lower)
+bf = mem.add("Biceps femoris: lateral hamstring", parent=hams)
+mem.add(
+    "Athlete A reported tight hamstrings after 400 m repeats",
+    parent=hams,
+    t=datetime.now(timezone.utc) - timedelta(days=30),
+)
+mem.add(
+    "Athlete A: flexibility improved after two weeks of eccentric work",
+    parent=hams,
+    t=datetime.now(timezone.utc) - timedelta(days=3),
+)
 
 for r in mem.search("hamstring tightness", k=3):
     print(f"{r.score:6.2f}  depth={r.depth:.1f}  w={r.time_weight:.2f}  {r.text}")
 
-mem.search("knee", mode="subtree", root=lower)      # only the lower-limb branch
-mem.search(mode="ancestors", root=bf)               # hams → lower → body
-mem.inspect("memory.html", open_browser=True)       # disk + table + tree, offline, self-contained
-mem.save("memory.db")                               # SQLite; Memory.load("memory.db")
+mem.search("knee", mode="subtree", root=lower)  # only the lower-limb branch
+mem.search(mode="ancestors", root=bf)  # hams → lower → body
+mem.inspect("memory.html", open_browser=True)  # disk + table + tree, offline, self-contained
+mem.save("memory.db")  # SQLite; Memory.load("memory.db")
 ```
 
 The default embedder is a deterministic hashing embedder so everything runs offline; pass `embedder=SentenceTransformerEmbedder()` or any callable for real semantics.

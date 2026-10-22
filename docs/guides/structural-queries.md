@@ -35,8 +35,8 @@ recent = mem.search("hamstring", k=5, filters=lambda r: r.access_count == 0)
 ## Zooming with `depth_bias`
 
 ```python
-general = mem.search("calf", k=3, touch=False)          # depth_bias = 0
-mem.depth_bias = 0.5                                     # prefer deeper, more specific memories
+general = mem.search("calf", k=3, touch=False)  # depth_bias = 0
+mem.depth_bias = 0.5  # prefer deeper, more specific memories
 specific = mem.search("calf", k=3, touch=False)
 mem.depth_bias = 0.0
 ```

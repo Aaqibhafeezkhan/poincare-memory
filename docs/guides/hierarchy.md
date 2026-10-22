@@ -8,14 +8,20 @@ A memory's depth comes from its parent, so parents must exist before children. G
 from poincare_memory import Memory
 
 mem = Memory()
-mem.add_many([
-    {"text": "Human musculoskeletal system", "id": "body"},
-    {"text": "Lower limb musculature", "parent": "body", "id": "lower"},
-    {"text": "Hamstring group: knee flexion and hip extension", "parent": "lower", "id": "hams"},
-    {"text": "Biceps femoris: lateral hamstring", "parent": "hams", "id": "bf"},
-    {"text": "Semitendinosus: medial hamstring", "parent": "hams", "id": "st"},
-])
-print(mem.level("bf"), round(mem.depth("bf"), 2))   # 3 2.5
+mem.add_many(
+    [
+        {"text": "Human musculoskeletal system", "id": "body"},
+        {"text": "Lower limb musculature", "parent": "body", "id": "lower"},
+        {
+            "text": "Hamstring group: knee flexion and hip extension",
+            "parent": "lower",
+            "id": "hams",
+        },
+        {"text": "Biceps femoris: lateral hamstring", "parent": "hams", "id": "bf"},
+        {"text": "Semitendinosus: medial hamstring", "parent": "hams", "id": "st"},
+    ]
+)
+print(mem.level("bf"), round(mem.depth("bf"), 2))  # 3 2.5
 ```
 
 `add_many` embeds all texts in one call, which matters with real embedding models.
@@ -31,9 +37,9 @@ A memory can hold several independent hierarchies; each root sits at `base_depth
 ## Re-parenting, updating, removing
 
 ```python
-mem.link("st", "lower")                     # move a subtree; depths and directions are recomputed
+mem.link("st", "lower")  # move a subtree; depths and directions are recomputed
 mem.update("hams", text="Hamstrings: knee flexion and hip extension", meta={"source": "textbook"})
-mem.remove("st")                            # leaves only; pass cascade=True to drop a subtree
+mem.remove("st")  # leaves only; pass cascade=True to drop a subtree
 ```
 
 `update` with new text re-embeds the memory and re-places its descendants, because their directions inherit from it.

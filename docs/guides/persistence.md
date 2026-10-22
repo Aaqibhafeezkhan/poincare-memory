@@ -17,7 +17,7 @@ assert mem2.ids == mem.ids
 ## JSON
 
 ```python
-text = mem.to_json()                 # portable, human-readable
+text = mem.to_json()  # portable, human-readable
 mem.to_json("memory.json", indent=1)
 mem3 = Memory.from_json("memory.json")
 ```

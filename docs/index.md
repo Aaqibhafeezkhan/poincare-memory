@@ -17,22 +17,25 @@ It is the official open-source reference implementation of the geometry-aware me
 from datetime import datetime, timedelta, timezone
 from poincare_memory import Memory, HalfLife
 
-mem = Memory(decay=HalfLife(hours=24 * 30))          # observations fade with a 30-day half-life
+mem = Memory(decay=HalfLife(hours=24 * 30))  # observations fade with a 30-day half-life
 
-body  = mem.add("Human musculoskeletal system")
+body = mem.add("Human musculoskeletal system")
 lower = mem.add("Lower limb musculature", parent=body)
-hams  = mem.add("Hamstring group: knee flexion and hip extension", parent=lower)
-bf    = mem.add("Biceps femoris: lateral hamstring", parent=hams)
-mem.add("Athlete A reported tight hamstrings after 400 m repeats",
-        parent=hams, t=datetime.now(timezone.utc) - timedelta(days=30))
+hams = mem.add("Hamstring group: knee flexion and hip extension", parent=lower)
+bf = mem.add("Biceps femoris: lateral hamstring", parent=hams)
+mem.add(
+    "Athlete A reported tight hamstrings after 400 m repeats",
+    parent=hams,
+    t=datetime.now(timezone.utc) - timedelta(days=30),
+)
 
 for r in mem.search("hamstring tightness", k=3):
     print(f"{r.score:6.2f}  depth={r.depth:.1f}  w={r.time_weight:.2f}  {r.text}")
 
-mem.search("knee", mode="subtree", root=lower)      # only the lower-limb branch
-mem.search(mode="ancestors", root=bf)               # hams → lower → body
-mem.inspect("memory.html")                          # interactive disk, table and tree
-mem.save("memory.db")                               # one SQLite file
+mem.search("knee", mode="subtree", root=lower)  # only the lower-limb branch
+mem.search(mode="ancestors", root=bf)  # hams → lower → body
+mem.inspect("memory.html")  # interactive disk, table and tree
+mem.save("memory.db")  # one SQLite file
 ```
 
 ## What you get

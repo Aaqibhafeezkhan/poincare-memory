@@ -51,8 +51,8 @@ Scores are `-distance + depth_bias * depth + time_coef * log(time_weight)`. With
 Structural questions do not need a query:
 
 ```python
-mem.search(mode="children", root="api")      # rate, tokens
-mem.search(mode="ancestors", root="rate")    # api, kb
+mem.search(mode="children", root="api")  # rate, tokens
+mem.search(mode="ancestors", root="rate")  # api, kb
 mem.search("limits", mode="subtree", root="api", k=5)
 ```
 
@@ -66,7 +66,7 @@ now = datetime.now(timezone.utc)
 mem = Memory(decay=HalfLife(hours=24 * 7))
 mem.add("Release 2.3: rate limit 100 rps", id="old", t=now - timedelta(days=60))
 mem.add("Release 2.4: rate limit 250 rps", id="new", t=now - timedelta(days=2))
-print([r.id for r in mem.search("rate limit", k=2)])          # ['new', 'old']
+print([r.id for r in mem.search("rate limit", k=2)])  # ['new', 'old']
 print([r.id for r in mem.search("rate limit", k=2, at_time=now - timedelta(days=50))])  # the past
 ```
 
@@ -75,7 +75,7 @@ Facts that stop being true on a date get a `valid_until` and a `ValidityWindow` 
 ## A first picture
 
 ```python
-mem.inspect("memory.html")           # add open_browser=True to open it
+mem.inspect("memory.html")  # add open_browser=True to open it
 ```
 
 One self-contained file: an interactive Poincaré disk (hover, click to light up ancestors and descendants, drag to pan hyperbolically, slide time), a sortable table and a collapsible tree. In Jupyter, a `Memory` renders the same inspector inline. See [Inspecting a memory](guides/inspection.md).

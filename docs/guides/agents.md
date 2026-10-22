@@ -11,14 +11,17 @@ athlete = mem.add("Athlete profile: 400 m sprinter, 24, right-leg dominant", id=
 mem.add("Injury history", parent=athlete, id="injury")
 mem.add("Training log", parent=athlete, id="log")
 
+
 def observe(text: str, where: str) -> str:
     """Write: attach an observation under the right branch."""
     return mem.add(text, parent=where, t=datetime.now(timezone.utc))
 
+
 def context(question: str, k: int = 4) -> str:
     """Read: time-weighted, hierarchy-aware context for the model."""
-    hits = mem.search(question, k=k)                      # accesses strengthen stability
+    hits = mem.search(question, k=k)  # accesses strengthen stability
     return "\n".join(f"- [{h.id}] ({h.time_weight:.2f}) {h.text}" for h in hits)
+
 
 observe("Calf tightness after hill sprints", "log")
 observe("Grade 1 hamstring strain, left, 2025-11", "injury")

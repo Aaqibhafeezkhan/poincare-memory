@@ -11,6 +11,7 @@ An embedder is anything with a `dim` and an `embed(texts) -> array of shape (n, 
 ```python
 # docs: skip (downloads a model)
 from poincare_memory import Memory, SentenceTransformerEmbedder
+
 mem = Memory(embedder=SentenceTransformerEmbedder("sentence-transformers/all-MiniLM-L6-v2"))
 ```
 
@@ -22,9 +23,11 @@ mem = Memory(embedder=SentenceTransformerEmbedder("sentence-transformers/all-Min
 import numpy as np
 from poincare_memory import CallableEmbedder, Memory
 
-def my_encode(texts):                      # stand-in for any model or API call
+
+def my_encode(texts):  # stand-in for any model or API call
     rng = np.random.default_rng(abs(hash(tuple(texts))) % 2**32)
     return rng.normal(size=(len(texts), 1024))
+
 
 emb = CallableEmbedder(fn=my_encode, dim=1024)
 mem = Memory(embedder=emb)

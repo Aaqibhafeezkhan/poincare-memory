@@ -8,7 +8,7 @@ Seeing is the point of putting memories in a disk.
 from poincare_memory.demo import build_demo_memory
 
 mem = build_demo_memory()
-html = mem.inspect("memory.html", title="my memory")   # open_browser=True to open it
+html = mem.inspect("memory.html", title="my memory")  # open_browser=True to open it
 ```
 
 One self-contained file (no CDN, no server) with three tabs:
@@ -28,17 +28,17 @@ A `Memory` object renders the inspector inline (`_repr_html_`).
 ## Matplotlib
 
 ```python
-ax = mem.plot(labels=True)        # pip install "poincare-memory[viz]"
+ax = mem.plot(labels=True)  # pip install "poincare-memory[viz]"
 ax.figure.savefig("memory.png", dpi=160)
 ```
 
 ## Text views
 
 ```python
-print(mem.tree())                 # ASCII tree with depths
-rows = mem.table()                # list of dicts
-df = mem.to_dataframe()           # pip install "poincare-memory[pandas]"
-print(mem.stats())                # counts, levels, depths, timestamps, mean weight
+print(mem.tree())  # ASCII tree with depths
+rows = mem.table()  # list of dicts
+df = mem.to_dataframe()  # pip install "poincare-memory[pandas]"
+print(mem.stats())  # counts, levels, depths, timestamps, mean weight
 ```
 
 ## Exporting the drawing
