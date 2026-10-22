@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. The format follows Keep a Changelog; versions follow SemVer.
 
+## [0.1.2] — 2026-10-21
+### Changed
+- The PyPI project page uses a description without repository-hosted images and badges (`README.pypi.md`, derived from the README by `scripts/make_pypi_readme.py`).
+
 ## [0.1.1] — 2026-10-21
 ### Fixed
 - A docstring in the hashing embedder contained an unescaped regular-expression sequence, which raised a `SyntaxWarning` on import under Python 3.12 and later.
