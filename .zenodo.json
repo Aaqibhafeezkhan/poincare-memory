@@ -1,7 +1,7 @@
 {
   "upload_type": "software",
   "title": "poincare-memory: hierarchy-aware, time-aware memory for LLM agents on the Poincaré ball",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "creators": [
     {
       "name": "Mojila, Dhruv",
