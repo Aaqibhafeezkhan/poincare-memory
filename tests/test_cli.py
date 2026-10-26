@@ -1,4 +1,5 @@
 from poincare_memory.cli import main
+from poincare_memory.store.memory import Memory
 
 
 def test_cli_demo_inspect_tree_search(tmp_path, capsys):
@@ -13,3 +14,21 @@ def test_cli_demo_inspect_tree_search(tmp_path, capsys):
     assert main(["import", str(tmp_path / "demo.json"), str(tmp_path / "demo2.db")]) == 0
     captured = capsys.readouterr().out
     assert "Soleus" in captured and "wrote" in captured and '"count"' in captured
+
+
+def test_cli_tree_root_prints_only_selected_subtree(tmp_path, capsys):
+    mem = Memory()
+    mem.add("Body", id="body")
+    mem.add("Hamstring group", parent="body", id="hams")
+    mem.add("Biceps femoris", parent="hams", id="biceps")
+    mem.add("Calf muscles", parent="body", id="calves")
+    db = tmp_path / "memory.db"
+    mem.save(db)
+
+    assert main(["tree", str(db), "--root", "hams"]) == 0
+
+    output = capsys.readouterr().out
+    assert "Hamstring group" in output
+    assert "Biceps femoris" in output
+    assert "Body" not in output
+    assert "Calf muscles" not in output
