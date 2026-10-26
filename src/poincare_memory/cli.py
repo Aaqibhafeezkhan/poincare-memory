@@ -21,6 +21,7 @@ def main(argv: list[str] | None = None) -> int:
 
     s = sub.add_parser("tree", help="print the hierarchy as an ASCII tree")
     s.add_argument("db", type=Path)
+    s.add_argument("--root", default=None, help="print only the subtree below this memory ID")
 
     s = sub.add_parser("search", help="search a saved memory")
     s.add_argument("db", type=Path)
@@ -53,7 +54,7 @@ def main(argv: list[str] | None = None) -> int:
         mem.inspect(out, open_browser=a.open)
         print(f"wrote {out} ({len(mem)} memories)")
     elif a.cmd == "tree":
-        print(Memory.load(a.db).tree())
+        print(Memory.load(a.db).tree(root=a.root))
     elif a.cmd == "search":
         mem = Memory.load(a.db)
         for r in mem.search(a.query, k=a.k, mode=a.mode, root=a.root, touch=False):
