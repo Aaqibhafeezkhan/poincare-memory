@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented here. The format follows Keep a Changelog; versions follow SemVer.
 
+## [Unreleased]
+### Added
+- Add `--root` to the `tree` CLI command to print a selected memory subtree.
+
 ## [0.1.4] — 2026-10-22
 ### Fixed
 - Documentation: the scoring explanation (README "How scoring works" and Concepts) gave an angular crossover figure derived from the large-depth approximation of the Poincaré distance, which is inaccurate at the default depths; replaced with exact figures. The default shell metric and all behaviour are unchanged.
@@ -28,6 +32,6 @@ All notable changes to this project are documented here. The format follows Keep
 - Inspector layouts: `structural` (radial tree at true hyperbolic depths, default when parents exist) and `projection` (semantic directions); `DecayPolicy` exported at package level.
 - WordNet mammals benchmark results recorded with raw JSON and a chart; README demo GIF.
 - Production hardening: `add_many` (one embedding call), `update`, `to_json` / `from_json`, `stats`, `__repr__`, input validation, module logging, a re-entrant lock around all mutating and searching calls, and `build_index` with NumPy or FAISS (`[ann]` extra) backends for indexed shell-metric search; `SearchResult.to_dict`; CLI `stats`, `export`, `import`.
-- Documentation site (mkdocs-material): getting started, concepts, eight guides, API reference, FAQ; every Python block in the docs is executed in CI by `scripts/check_docs_examples.py`.
+- Documentation site (mkdocs-material): getting started, concepts, eight guides, API reference, FAQ; every Python code block in the docs is executed in CI by `scripts/check_docs_examples.py`.
 - The hashing embedder now keys BLAKE2b with the seed (instead of salting), so the TypeScript port in the explainer produces identical vectors.
 - CLI (`demo`, `inspect`, `tree`, `search`), WordNet reconstruction benchmark, documentation.
