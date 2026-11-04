@@ -1,5 +1,5 @@
 from poincare_memory.cli import main
-from poincare_memory.store.memory import Memory
+from poincare_memory import Memory
 
 
 def test_cli_demo_inspect_tree_search(tmp_path, capsys):
