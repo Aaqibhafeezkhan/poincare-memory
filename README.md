@@ -118,6 +118,7 @@ Full docs at https://dhruvmojila.github.io/poincare-memory (getting started, con
 poincare-memory demo -o demo --open    # build the anatomy demo, save demo.db, open demo.html
 poincare-memory inspect memory.db      # write memory.html
 poincare-memory tree memory.db
+poincare-memory tree memory.db --root <id>  # print one subtree only
 poincare-memory search memory.db "calf strain" -k 5 --mode subtree --root lower
 poincare-memory stats memory.db
 poincare-memory export memory.db memory.json
