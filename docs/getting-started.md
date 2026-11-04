@@ -94,6 +94,7 @@ mem.to_json("memory.json")
 poincare-memory demo -o demo --open       # build the anatomy demo, save demo.db, open demo.html
 poincare-memory inspect memory.db         # write memory.html
 poincare-memory tree memory.db
+poincare-memory tree memory.db --root <id>  # print one subtree only
 poincare-memory search memory.db "rate limit" -k 5 --mode subtree --root api
 poincare-memory stats memory.db
 poincare-memory export memory.db memory.json
