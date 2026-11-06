@@ -13,7 +13,7 @@ def test_cli_demo_inspect_tree_search(tmp_path, capsys):
     assert main(["export", str(tmp_path / "demo.db"), str(tmp_path / "demo.json")]) == 0
     assert main(["import", str(tmp_path / "demo.json"), str(tmp_path / "demo2.db")]) == 0
     captured = capsys.readouterr().out
-    assert "Soleus" in captured and "wrote" in captured and '\"count\"' in captured
+    assert "Soleus" in captured and "wrote" in captured and '"count"' in captured
 
 
 def test_cli_tree_root_prints_only_selected_subtree(tmp_path, capsys):
